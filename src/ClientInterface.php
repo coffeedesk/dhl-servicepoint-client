@@ -5,6 +5,10 @@ namespace DHLServicePointClient;
 
 use DHLServicePointClient\Model\createShipmentResponse;
 use DHLServicePointClient\Model\deleteShipmentResponse;
+use DHLServicePointClient\Model\getLabelResponse;
+use DHLServicePointClient\Model\getNearestServicepointsCODResponse;
+use DHLServicePointClient\Model\getNearestServicepointsResponse;
+use DHLServicePointClient\Model\getPnpResponse;
 use DHLServicePointClient\Model\ShipmentStructure;
 
 interface ClientInterface {
@@ -18,8 +22,37 @@ interface ClientInterface {
     public function createShipment(ShipmentStructure $shipmentStructure);
 
     /**
-     * @param $shipmentNumber
+     * @param string $shipmentNumber
      * @return deleteShipmentResponse
      */
     public function deleteShipment($shipmentNumber);
+
+    /**
+     * @param string $shipmentNumber
+     * @param string $labelType
+     * @return getLabelResponse
+     */
+    public function getLabel($shipmentNumber, $labelType);
+
+    /**
+     * @param string $postcode
+     * @param string $city
+     * @param int $radius
+     * @return getNearestServicepointsResponse
+     */
+    public function getNearestServicepoints($postcode, $city, $radius);
+
+    /**
+     * @param string $postcode
+     * @param string $city
+     * @param int $radius
+     * @return getNearestServicepointsCODResponse
+     */
+    public function getNearestServicepointsCOD($postcode, $city, $radius);
+
+    /**
+     * @param string $shipmentDate
+     * @return getPnpResponse
+     */
+    public function getPnp($shipmentDate);
 }
