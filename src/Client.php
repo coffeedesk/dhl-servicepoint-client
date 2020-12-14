@@ -34,7 +34,7 @@ class Client implements ClientInterface {
 
     const WSDL_URL = 'https://dhl24.com.pl/servicepoint.html';
 
-    public function __construct($username = null, $password = null, $wsdl = null) {
+    public function __construct($username = null, $password = null, $wsdl = null, $options = []) {
         $this->username = $username;
         $this->password = $password;
 
@@ -46,7 +46,7 @@ class Client implements ClientInterface {
         $this->authData->setUsername($username);
         $this->authData->setPassword($password);
 
-        $this->service = new ServicePointMethodsService([], $wsdl);
+        $this->service = new ServicePointMethodsService($options, $wsdl);
     }
 
     /**
@@ -131,6 +131,20 @@ class Client implements ClientInterface {
         $getPnp = new getPnp($getPnpStructure);
 
         return $this->service->getPnp($getPnp);
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastRequest() {
+        return $this->service->__getLastRequest();
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastResponse() {
+        return $this->service->__getLastResponse();
     }
 
     /**
