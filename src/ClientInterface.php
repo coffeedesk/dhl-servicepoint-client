@@ -13,7 +13,7 @@ use DHLServicePointClient\Model\ShipmentStructure;
 
 interface ClientInterface {
 
-    public function __construct($username = null, $password = null, $wsdl = null);
+    public function __construct($username = null, $password = null, $wsdl = null, $options = []);
 
     /**
      * @param ShipmentStructure $shipmentStructure
@@ -55,4 +55,14 @@ interface ClientInterface {
      * @return getPnpResponse
      */
     public function getPnp($shipmentDate);
+
+    /**
+     * @return string
+     */
+    public function getLastRequest();
+
+    /**
+     * @return string
+     */
+    public function getLastResponse();
 }
