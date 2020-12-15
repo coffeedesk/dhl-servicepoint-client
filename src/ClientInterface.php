@@ -9,6 +9,7 @@ use DHLServicePointClient\Model\getLabelResponse;
 use DHLServicePointClient\Model\getNearestServicepointsCODResponse;
 use DHLServicePointClient\Model\getNearestServicepointsResponse;
 use DHLServicePointClient\Model\getPnpResponse;
+use DHLServicePointClient\Model\ServicePointMethodsService;
 use DHLServicePointClient\Model\ShipmentStructure;
 
 interface ClientInterface {
@@ -57,12 +58,7 @@ interface ClientInterface {
     public function getPnp($shipmentDate);
 
     /**
-     * @return string
+     * @return ServicePointMethodsService
      */
-    public function getLastRequest();
-
-    /**
-     * @return string
-     */
-    public function getLastResponse();
+    public function getService();
 }

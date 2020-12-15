@@ -134,17 +134,10 @@ class Client implements ClientInterface {
     }
 
     /**
-     * @return string
+     * @return ServicePointMethodsService
      */
-    public function getLastRequest() {
-        return $this->service->__getLastRequest();
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastResponse() {
-        return $this->service->__getLastResponse();
+    public function getService() {
+        return $this->service;
     }
 
     /**
